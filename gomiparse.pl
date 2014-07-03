@@ -43,15 +43,17 @@ sub gomiparse {
         $info->{pura} = [youbi2num($1)];
     }
 
-    if ($line =~ /雑がみは(.+)日の(\w+)曜日です。燃やせない/) {
+    if ($line =~ /雑がみは(.+)日の(\w+)曜日です。(燃やせない|\w+月は燃やせない)/) {
         $info->{zatsugami} = [getdays($1)];
     }
 
-    if ($line =~ /燃やせないごみは(.+)日の(\w+)曜日です。(枝|\w月)/) {
+    if ($line =~ /燃やせないごみは(.+)日の(\w+)曜日です。(枝|\w+月は枝)/) {
         $info->{moyasenai} = [getdays($1)];
     }
 
     if ($line =~ /枝・葉・草は(.+)の(\w+)曜日です/) {
+        $info->{eda} = [getdays($1)];
+    } elsif ($line =~ /枝・葉・草は(.+)日の収集です/) {
         $info->{eda} = [getdays($1)];
     } elsif ($line =~ /枝・葉・草の収集はありません/) {
         $info->{eda} = [''];
