@@ -131,7 +131,7 @@ sub gominohi {
 
                 my @count = grep { $_ eq $j } @{$info->{moyaseru}};
                 unless (@count == 0) {
-                    push(@gomi, encode_utf8("$info->{year}/$info->{month}/$day, " . num2youbi($j) . ", 燃やせるゴミ"));
+                    push(@gomi, encode_utf8("$info->{year}/$info->{month}/$day, " . num2youbi($j) . ", 燃やせるごみ"));
                     $gomiflag=1;
                 }
 
